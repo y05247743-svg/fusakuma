@@ -338,7 +338,7 @@
     // ==========================================
     // ★設定：ここにGASのウェブアプリURLを貼り付けてください
     // ==========================================
-    const API_URL = "https://script.google.com/a/macros/edu.city.yokohama.jp/s/AKfycbzhdLRpIfTnmVGdnkxtxsprmjbO3UO5Xg0vrJLzvrvc-io9lN8ZzOxZPeKcIqqxIHuhpg/exec";
+    const API_URL = "★GASのURLをここに貼る★";
 
 
     // --- アプリのロジック ---
@@ -572,4 +572,31 @@
             
             htmlGlobal += `
                 <li class="rank-item">
-                    <div style
+                    <div style="display:flex; align-items:center;">
+                        <span class="rank-rank" style="background:${rankColor}; color:${rankTextColor};">${i+1}</span>
+                        <span style="font-weight:bold;">${row.class}</span>
+                    </div>
+                    <span class="rank-time">${row.time_text}</span>
+                </li>`;
+        });
+        htmlGlobal += '</ul>';
+        if(todayData.length === 0) htmlGlobal = '<div style="padding:30px; text-align:center; color:#999;">今日の記録はまだありません。<br>一番乗りを目指そう！</div>';
+        document.getElementById('ranking-global-list').innerHTML = htmlGlobal;
+    }
+
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.innerText = msg;
+        t.style.display = 'block';
+        setTimeout(() => { t.style.display = 'none'; }, 3000);
+    }
+</script>
+
+<style>
+@keyframes spin { 100% { transform: rotate(360deg); } }
+</style>
+
+</body>
+</html>
+
+
